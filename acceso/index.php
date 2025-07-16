@@ -29,7 +29,6 @@
             
             if ( (isset($_GET['pass']) && (isset($_GET['usuario']) ))){
             if (($_GET['pass'] == '0') && ($_GET['usuario'] == '0')) {
-
                 echo "<p> Credenciales incorrectas</p>";
             }
         }

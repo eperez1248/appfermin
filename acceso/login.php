@@ -4,8 +4,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     function validar_requerido(string $texto) {
         $salida = true;
-        if (trim($texto) == '')
-        {$salida = false;}
+        if (trim($texto) == '') {
+            $salida = false;
+        }
         return $salida;
     }
 
@@ -34,20 +35,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errores = $errores . "&pass=0";
     }
 
-    $usuariog = 'pepe';
-    $passg = '123';
+    $usuarios[] = [['0', 'pepe', '123', '1'], ['1', 'ana', '456', '2'], ['2', 'manolo', '678', '1'], ['3', 'juan', '890', '1']];
+    foreach ($usuarios as $usu)
+        foreach ($usu as $dato) {
+            if (($usuario == $dato[1])&&($pass ==$dato[2])) {
+                session_start();
+                $_SESSION['id'] = $dato[0];
+                $_SESSION['nombre'] = $dato[1];
+                $_SESSION['perfil'] = $dato[3];
+                header('Location: sistema.php');
+            }
+        }
+                    if (!(isset($_SESSION['id'])))
+            header('Location: index.php' . $errores);
 
-    if (($usuario == $usuariog) && ($pass == $passg)) {
-        session_start();
-        $_SESSION['usuario'] = $usuario;
-
-        header('Location: sistema.php');
-        die();
-    } else {
-        
-        
-        header('Location: index.php' . $errores);
-    }
 }
 ?>
 
