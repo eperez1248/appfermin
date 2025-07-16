@@ -1,6 +1,9 @@
 <?php
+include 'cabecera.php';
+$imprime= $_SESSION['usuario'];
 
-session_start();
-$imprime = $_SESSION['usuario'];
-echo "<p>Hola soy el sistema, si, el sistema te escucha</p>";
-echo "<p>La primera variable de sesion es $imprime</p>";
+echo "<p>hola soy el sistema, si, el sistema de escucha</p>";
+echo " <p>la primera variable de sesion ".$imprime."</p>";
+?>
+<a href="logout.php"> salida del sistema</a>
+
