@@ -1,0 +1,4 @@
+1 botelladevino
+3 latasdecerveza
+3 latasdefanta
+4 litrosdecocacola

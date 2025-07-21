@@ -1,25 +1,17 @@
 <?php
 
-include 'includes/clase.php';
+include 'includes/clases.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    function validar_requerido(string $texto) {
-        $salida = true;
-        if (trim($texto) == '') {
-            $salida = false;
-        }
-        return $salida;
-    }
-
     if (isset($_REQUEST['usuario'])) {
-        $usuario = trim($_REQUEST['usuario']);
+        $usuario = $_REQUEST['usuario'];
     } else {
         $usuario = '';
     }
 
     if (isset($_REQUEST['pass'])) {
-        $pass = trim($_REQUEST['pass']);
+        $pass = $_REQUEST['pass'];
     } else {
         $pass = '';
     }
@@ -37,28 +29,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errores = $errores . "&pass=0";
     }
 
-    /* $usuarios[] = [['0', 'pepe', '123', '1'], ['1', 'ana', '456', '2'], ['2', 'manolo', '678', '1'], ['3', 'juan', '890', '1']];
-      foreach ($usuarios as $usu)
-      foreach ($usu as $dato) {
-      if (($usuario == $dato[1])&&($pass ==$dato[2])) {
-      session_start();
-      $_SESSION['id'] = $dato[0];
-      $_SESSION['nombre'] = $dato[1];
-      $_SESSION['perfil'] = $dato[3];
-      header('Location: sistema.php');
-      }
-      } */
-    $mifichero = new fitexto("tres.txt");
-    
-    if ($mifichero->buscar($usuario, $pass)) {
+    $datos = new fitexto("datos/usuarios.txt");
+    if ($datos->buscar($usuario, $pass)) {
         session_start();
-        $_SESSION['nombre'] = $usuario;
-        $_SESSION['perfil'] = $mifichero->perfil($usuario,$pass);
-        header('Location:sistema.php');
+        $_SESSION['usuario'] = $_REQUEST['usuario'];
+        $_SESSION['perfil'] = $datos->perfil($usuario, $pass);
+        header('Location: perfil.php');
+        die();
     }
-    
-    if (!(isset($_SESSION['nombre'])))
-        header('Location: index.php' . $errores);
-}
-?>
 
+    if (!(isset($_SESSION['id'])))
+        header('Location: index.php' . $errores);
+} else {
+
+    header('Location: index.php');
+}
+?>        

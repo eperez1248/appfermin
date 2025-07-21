@@ -1,6 +1,6 @@
 <?php
 class fitexto {
-
+    
     private $nombre;
     private $cadena;
     private $array;
@@ -11,6 +11,10 @@ class fitexto {
 
     public function setnombre($nombre) {
         $this->nombre = $nombre;
+    }
+
+    public function getnombre() {
+        return $this->nombre;
     }
 
     public function leerfichero() {
@@ -36,25 +40,32 @@ class fitexto {
         $salida = false;
         foreach ($this->array as $value) {
             $temporal = explode(" ", $value);
-            //echo "<p> Primer valor: " . $temporal[0] . "</p>";
-            //echo "<p> Segundo valor: " . $temporal[1] . "</p>";
-            if (($nombre == $temporal[0])&&($pass == $temporal[1])){
+            if (($nombre == $temporal[0]) && ($pass == $temporal[1])) {
                 $salida = true;
             }
         }
         return $salida;
     }
-    
-     public function perfil($nombre, $pass) {
+    public function perfil($nombre, $pass) {
+        $salida="";
         $this->leerfichero();
+        
         foreach ($this->array as $value) {
             $temporal = explode(" ", $value);
-            //echo "<p> Primer valor: " . $temporal[0] . "</p>";
-            //echo "<p> Segundo valor: " . $temporal[1] . "</p>";
-            if (($nombre == $temporal[0])&&($pass == $temporal[1])){
+            if (($nombre == $temporal[0]) && ($pass == $temporal[1])) {
                 $salida = $temporal[2];
             }
         }
         return $salida;
     }
+    
 }
+ function validar_requerido(string $texto) {
+        $salida = true;
+        if (trim($texto) == '') {
+            $salida = false;
+        }
+        return $salida;
+    }
+
+?>
