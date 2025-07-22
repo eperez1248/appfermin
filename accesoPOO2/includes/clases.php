@@ -1,25 +1,12 @@
 <?php
-class fitexto{
-    
+
+class fitexto {
+
     private $nombre;
-    private $cadena;
     private $array;
 
     public function __construct($nombre) {
         $this->nombre = $nombre;
-    }
-
-    public function setnombre($nombre) {
-        $this->nombre = $nombre;
-    }
-
-    public function getnombre() {
-        return $this->nombre;
-    }
-
-    public function leerfichero() {
-        $this->array = file($this->nombre);
-        return $this->array;
     }
 
     public function crearfichero() {
@@ -35,6 +22,11 @@ class fitexto{
         }
     }
 
+    public function leerfichero() {
+        $this->array = file($this->nombre);
+        return $this->array;
+    }
+
     public function buscar($nombre, $pass) {
         $this->leerfichero();
         $salida = false;
@@ -46,20 +38,36 @@ class fitexto{
         }
         return $salida;
     }
-    public function perfil($nombre, $pass) {
-        $salida="";
+     public function perfil($nombre) {
         $this->leerfichero();
-        
+        $salida="";
         foreach ($this->array as $value) {
             $temporal = explode(" ", $value);
-            if (($nombre == $temporal[0]) && ($pass == $temporal[1])) {
+            if (($nombre == $temporal[0])) {
                 $salida = $temporal[2];
             }
         }
         return $salida;
     }
     
+         public function datosusuario($usuario) {
+        $this->leerfichero();
+        
+        foreach ($this->array as $value) {
+            $temporal = explode(" ", $value);
+            if (($usuario == $temporal[0])) {
+                $salida[] = $temporal[1]." ".$temporal[2] ;
+            }
+        }
+        return $salida;
+    }
+    
+    
+    
+    
+    
 }
+
  function validar_requerido(string $texto) {
         $salida = true;
         if (trim($texto) == '') {
@@ -67,5 +75,3 @@ class fitexto{
         }
         return $salida;
     }
-
-?>
