@@ -52,6 +52,7 @@ class fitexto {
     
          public function datosusuario($usuario) {
         $this->leerfichero();
+        $salida[0] = "";
         
         foreach ($this->array as $value) {
             $temporal = explode(" ", $value);

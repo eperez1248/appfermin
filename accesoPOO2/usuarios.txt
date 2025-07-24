@@ -1,3 +1,0 @@
-pepe 1234 1
-ana 456 2
-manolo 789 1
