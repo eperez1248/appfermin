@@ -1,6 +1,0 @@
-manolo 10 longanizas
-manolo 5 quesos
-manolo 3 chorizo
-pepe 3 salchichon
-pepe 2 jamones
-pepe 1 queso

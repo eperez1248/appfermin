@@ -1,9 +1,0 @@
-pepe 1234 1
-manolo 4567 1
-ana 8901 2
-fermin 2345 1
-santos 5678 1
-maria 6789 1
-asun 1111 2
-luis 3456 1
-cion 2222 2
