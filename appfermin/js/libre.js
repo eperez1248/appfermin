@@ -1,6 +1,10 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/javascript.js to edit this template
- */
-
-
+var ayuda = [
+    "Introduce el nombre ",
+    "Introduce el password ",
+    "Este botón envía el formulario ",
+    "Este botón limpia los datos ",
+    ""
+];
+function TextoAyuda(nayuda){
+    document.getElementById("tip").innerHTML = Ayuda[nayuda];
+}
